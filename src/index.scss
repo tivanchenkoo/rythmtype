@@ -8,6 +8,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  font-family: "Inter", sans-serif;
 }
 
 * {
@@ -23,6 +24,5 @@ code {
 #root {
   min-width: 100vw;
   min-height: 100vh;
-  background-color: #000;
   overflow: hidden;
 }

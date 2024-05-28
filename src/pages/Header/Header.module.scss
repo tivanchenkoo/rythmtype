@@ -1,0 +1,60 @@
+@import "@/shared/scss/_bootstrapdependencies";
+@import "@/shared/scss/colors.scss";
+
+.header {
+  background-color: #000E31;
+  width: 100vw;
+  height: 100vh;
+
+  &__title {
+    font-size: 82px;
+    font-weight: 900;
+    margin-bottom: 21px;
+  }
+
+  &__subtitle {
+    font-size: 22px;
+  }
+
+  &__image {
+    width: 776px;
+    height: 958px;
+  }
+  &__info {
+    margin-left: 118px;
+  }
+  &__playbutton {
+    margin-top: 24px;
+    margin-bottom: 41px;
+    background-color: $white;
+    border-radius: 20px;
+    padding: 25.5px 109px;
+    color: #000;
+    text-decoration: none;
+  }
+
+  &__instructionbutton {
+    background-color: #000;
+    border-radius: 20px;
+    padding: 3px 10px;
+    border: 1px solid #676767;
+    color: $white;
+    text-decoration: none;
+  }
+}
+
+@include media-breakpoint-down(lg) {
+  .header {
+    text-align: center;
+    p {
+      width: 100%;
+    }
+    &__info {
+      padding: 150px 0;
+      margin: 0;
+    }
+    &__image { 
+      display: none;
+    }
+  }
+}
