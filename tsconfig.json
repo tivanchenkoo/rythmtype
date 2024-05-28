@@ -3,7 +3,14 @@
 		"baseUrl": "src",
 		"target": "es5",
 		"lib": ["dom", "dom.iterable", "esnext"],
-		"paths": { "@/app/*": ["app/*"] },
+		"paths": {
+			"@/app/*": ["app/*"],
+			"@/pages/*": ["pages/*"],
+			"@/widgets/*": ["widgets/*"],
+			"@/features/*": ["features/*"],
+			"@/entities/*": ["entities/*"],
+			"@/shared/*": ["shared/*"]
+		},
 		"allowJs": true,
 		"skipLibCheck": true,
 		"esModuleInterop": true,
@@ -18,5 +25,6 @@
 		"noEmit": true,
 		"jsx": "react-jsx"
 	},
-	"include": ["src"]
+	"include": ["src"],
+	"files": ["import.d.ts"]
 }
