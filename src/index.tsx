@@ -6,6 +6,7 @@ import store from "@/app/store"
 import { Route, RouterProvider } from "react-router-dom"
 import { router } from "./app/Router/Router"
 import { Provider } from "react-redux"
+import "./reset.css"
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement)
 
 root.render(

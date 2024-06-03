@@ -17,7 +17,7 @@ const Header = (): JSX.Element => {
 					<Row>
 						<Col xs={12} lg={7}>
 							<div
-								className={`${styles.header__info} h-100 d-flex align-items-center align-items-lg-start flex-column justify-content-center`}
+								className={`${styles.header__info} d-flex align-items-center align-items-lg-start flex-column`}
 							>
 								<p className={styles.header__title}>Научись писать быстрее</p>
 								<p className={styles.header__subtitle}>
@@ -45,7 +45,7 @@ const Header = (): JSX.Element => {
 					<Row>
 						<Col xs={12} lg={7}>
 							<div
-								className={`${styles.header__info} h-100 d-flex align-items-center align-items-lg-start flex-column justify-content-center`}
+								className={`${styles.header__info} d-flex align-items-center align-items-lg-start flex-column`}
 							>
 								<p className={styles.header__title}>Learn typing with game</p>
 								<p className={styles.header__subtitle}>
