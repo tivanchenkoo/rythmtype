@@ -1,14 +1,12 @@
 import React from "react"
 import styles from "@/pages/Header/Header.module.scss"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link } from "react-router-dom"
 import { Col, Container, Image, Row } from "react-bootstrap"
 import rocket from "@/shared/photos/Rocket.png"
 import { selectLang } from "@/shared/Slices/globalInfoSlice"
-import { useDispatch, useSelector } from "react-redux"
+import { useSelector } from "react-redux"
 const Header = (): JSX.Element => {
-	const navigate = useNavigate()
 	const language = useSelector(selectLang)
-	const dispatch = useDispatch()
 
 	if (language === "ru") {
 		return (
@@ -23,7 +21,10 @@ const Header = (): JSX.Element => {
 								<p className={styles.header__subtitle}>
 									Пиши в 2 раза быстрее просто играя в игру
 								</p>
-								<Link className={styles.header__playbutton} to={""}>
+								<Link
+									className={styles.header__playbutton}
+									to={`/game/${language}`}
+								>
 									Играть
 								</Link>
 								<Link className={styles.header__instructionbutton} to={""}>
@@ -51,7 +52,10 @@ const Header = (): JSX.Element => {
 								<p className={styles.header__subtitle}>
 									Type X2 faster just by playing the game
 								</p>
-								<Link className={styles.header__playbutton} to={""}>
+								<Link
+									className={styles.header__playbutton}
+									to={`/game/${language}`}
+								>
 									Play
 								</Link>
 								<Link className={styles.header__instructionbutton} to={""}>
@@ -66,8 +70,6 @@ const Header = (): JSX.Element => {
 				</Container>
 			</header>
 		)
-	} else {
-		navigate("/en")
 	}
 	return <div>Smth went wrong, pls go back</div>
 }

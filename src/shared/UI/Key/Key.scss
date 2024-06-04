@@ -1,0 +1,126 @@
+@import "@/shared/scss/colors.scss";
+
+.row1 {
+  background-color: $row1;
+}
+
+.row--hover {
+  border-width: 1px 2px 5px 2px;
+  border-style: solid;
+}
+
+.row1--hover {
+  border-color: $row1-hover;
+}
+
+.row2 {
+
+  background-color: $row2;
+}
+
+.row2--hover {
+  border-color: $row2-hover;
+}
+
+.row3 {
+  background-color: $row3;
+}
+
+.row3--hover {
+  border-color: $row3-hover
+}
+
+.row4,
+.row5 {
+  background-color: $row4-5;
+}
+
+.row4--hover,
+.row5--hover {
+  border-color: $row4-5-hover
+}
+
+.row6,
+.row7 {
+  background-color: $row6-7;
+}
+
+.row6--hover,
+.row7--hover {
+  border-color: $row6-7-hover;
+}
+
+.row8 {
+  background-color: $row8;
+}
+
+.row8--hover {
+  border-color: $row8-hover;
+}
+
+.row9 {
+  background-color: $row9;
+}
+
+.row9--hover {
+  border-color: $row9-hover;
+}
+
+.row10 {
+  background-color: $row10;
+}
+
+.row0 {
+  background-color: $row0;
+}
+
+.row10--hover {
+  border-color: $row10-hover;
+}
+
+.key {
+  width: 53px;
+  height: 50px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  color: #000;
+  font-weight: 700;
+}
+
+.shift {
+  width: 133px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.row0--hover {
+  border-color: $row0-hover;
+}
+
+.capslock,
+.enter,
+.backspace {
+  width: 102px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.slash {
+  width: 75px;
+  height: 50px;
+  font-size: 32px;
+}
+
+.tab {
+  width: 80px;
+  height: 50px;
+  font-size: 16px;
+}
+
+.space {
+  width: 351px;
+  height: 50px;
+}

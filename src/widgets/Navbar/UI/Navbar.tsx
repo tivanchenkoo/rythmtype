@@ -4,7 +4,7 @@ import facebook from "@/shared/photos/facebooklogo.png"
 import styles from "@/widgets/Navbar/Navbar.module.scss"
 import twitter from "@/shared/photos/twitterlogo.png"
 import instagram from "@/shared/photos/instagramlogo.png"
-import { Link, useNavigate, useParams } from "react-router-dom"
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
 import {
 	selectLang,
 	setKeyboard,
@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux"
 import { useCallback } from "react"
 const Navbar = (): JSX.Element => {
 	const navigate = useNavigate()
+	let location = useLocation().pathname.split(/\//g)
 	type languageType = "ru" | "en"
 	const { language } = useParams<{ language: languageType }>()
 	const languageRedux = useSelector(selectLang)
@@ -79,7 +80,8 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
-									navigate(`/${e.target.value}`)
+									location.pop()
+									navigate(`${location.join("/")}/${e.target.value}`)
 								}
 								dispatch(setLang(e.target.value))
 							}}
@@ -155,7 +157,8 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
-									navigate(`/${e.target.value}`)
+									location.pop()
+									navigate(`${location.join("/")}/${e.target.value}`)
 								}
 								dispatch(setLang(e.target.value))
 							}}
@@ -168,9 +171,8 @@ const Navbar = (): JSX.Element => {
 			</div>
 		)
 	} else {
-		navigate("/en")
+		return <div></div>
 	}
-	return <div></div>
 }
 
 export default Navbar
