@@ -80,10 +80,8 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
-									location.pop()
-									navigate(`${location.join("/")}/${e.target.value}`)
+									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
-								dispatch(setLang(e.target.value))
 							}}
 						>
 							<option selected={languageRedux === "en"} value="en">
@@ -149,16 +147,15 @@ const Navbar = (): JSX.Element => {
 						</Link>
 					</div>
 					<button className={styles.navbar__button}>Log In</button>
-					<div className={styles.navbar__line}></div>
+					<div className={`d-none d-sm-block ${styles.navbar__line}`}></div>
 					<div className={styles.navbar__selectwrapper}>
 						<select
 							className={`${styles.navbar__language} ${styles.navbar__select}`}
 							name="language"
 							id=""
 							onChange={(e) => {
-								if (e.target.value !== language) {
-									location.pop()
-									navigate(`${location.join("/")}/${e.target.value}`)
+							if (e.target.value !== language) {
+									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
 								dispatch(setLang(e.target.value))
 							}}

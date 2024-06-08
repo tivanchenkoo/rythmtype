@@ -47,7 +47,8 @@ const Keyboard = (): JSX.Element => {
 	return (
 		<div
 			className={`
-				d-flex flex-column align-items-center
+				d-md-flex
+				d-none flex-column align-items-center
 				${styles.keyboard}
 			`}
 		>

@@ -29,6 +29,9 @@
   &__instruction {
     margin-left: 128px;
     margin-right: 40px;
+    @include media-breakpoint-down(sm) {
+      margin: 0;
+    }
   }
 
   &__select {

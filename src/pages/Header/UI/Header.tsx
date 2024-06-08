@@ -23,7 +23,7 @@ const Header = (): JSX.Element => {
 								</p>
 								<Link
 									className={styles.header__playbutton}
-									to={`/game/${language}`}
+									to={`/game?lang=${language}`}
 								>
 									Играть
 								</Link>
@@ -54,7 +54,7 @@ const Header = (): JSX.Element => {
 								</p>
 								<Link
 									className={styles.header__playbutton}
-									to={`/game/${language}`}
+									to={`/game?lang=${language}`}
 								>
 									Play
 								</Link>

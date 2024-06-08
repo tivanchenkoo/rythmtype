@@ -1,19 +1,30 @@
+@import "@/shared/scss/_bootstrapdependencies";
+
 p {
   margin: 0;
 }
 
-.gamearea {
+.gamearea,
+.startScreen {
   width: 100vw;
   height: 100vh;
   display: flex;
-  padding: 150px;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
 
   background-color: #000;
 
   &:focus {
     outline: none;
+  }
+
+  &__textWithInput {
+    margin-top: 300px;
+
+    @include media-breakpoint-down(md) {
+      margin-left: 10px;
+    }
   }
 
   &__maininput {
@@ -39,12 +50,19 @@ p {
   &__realtext {
     color: #B2B2B2;
     font-size: 32px;
+    text-wrap: nowrap;
+    max-width: 100vw;
+    width: 100%;
+
+    @include media-breakpoint-down(md) {
+      color: #fff;
+    }
   }
 
 
   &__line {
     max-width: 800px;
-    width: 100%;
+    width: 80%;
     margin-bottom: 105px;
     height: 3px;
     background-color: #fff;
@@ -57,5 +75,13 @@ p {
   &__nextlyric {
     color: #B2B2B2;
     margin-bottom: 105px;
+  }
+
+  .startButton {
+    margin: auto 0;
+    font-size: 64px;
+    background-color: transparent;
+    border: none;
+    border-bottom: solid 2px #fff;
   }
 }

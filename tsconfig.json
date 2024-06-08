@@ -26,5 +26,6 @@
 		"jsx": "react-jsx"
 	},
 	"include": ["src"],
-	"files": ["import.d.ts"]
+	"files": ["import.d.ts"],
+	"typeRoots": ["node_modules/@types", "custom_typings/"]
 }
