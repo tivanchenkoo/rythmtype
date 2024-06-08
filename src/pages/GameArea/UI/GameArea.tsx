@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from "react-redux"
 import { selectLang, setCurrentKey } from "@/shared/Slices/globalInfoSlice"
 import { useNavigate } from "react-router-dom"
 import audio from "@/shared/myaudio.mp3"
-import TitleOfSong from "@/pages/TitleOfSong/UI/TitleOfSong"
 import { ThreeDots } from "react-loader-spinner"
 interface props {
 	song: {
