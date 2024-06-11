@@ -3,9 +3,10 @@ import React, { useEffect, useState } from "react"
 import styles from "@/pages/GameArea/GameArea.module.scss"
 import { useDispatch, useSelector } from "react-redux"
 import { selectLang, setCurrentKey } from "@/shared/Slices/globalInfoSlice"
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate, useParams } from "react-router-dom"
 import audio from "@/shared/myaudio.mp3"
 import { ThreeDots } from "react-loader-spinner"
+import queryString from "query-string"
 interface props {
 	song: {
 		lyrics: string[]
@@ -18,6 +19,7 @@ interface props {
 }
 
 const GameArea = (props: props): JSX.Element => {
+	const id = useParams().id
 	let { lyrics, timings, title, songLanguage, intro, end } = props.song
 	const [inputValue, setInputValue] = useState("")
 	const [lyricNum, setLyricNum] = useState(0)
@@ -71,7 +73,7 @@ const GameArea = (props: props): JSX.Element => {
 	useEffect(() => {
 		if (lyrics[lyricNum] && lyrics[lyricNum][inputValue.length]) {
 			if (songLanguage !== language) {
-				navigate(`/game?lang=${songLanguage}`)
+				navigate(`/game/${id}?lang=${songLanguage}`)
 			}
 			if (lyrics[lyricNum][inputValue.length].match(/[A-Z]/)) {
 				dispatch(

@@ -1,0 +1,53 @@
+@import "@/shared/scss/_bootstrapdependencies.scss";
+
+.song {
+  display: inline-flex;
+  background-color: #28282E;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 11px 10px;
+  max-width: 300px;
+  width: 100%;
+  text-decoration: none;
+  max-height: 70px;
+
+  @include media-breakpoint-down(xxs) {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__additionalInfo {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  &__image {
+    width: 48px;
+    height: 48px;
+    border-radius: 5px;
+  }
+
+  &__subtitle {
+    font-size: 12px;
+
+    &:last-child {
+      font-weight: 700;
+      margin-left: 3px;
+    }
+
+    &:first-child {
+      margin-right: 4px;
+    }
+  }
+}
+
+@include media-breakpoint-down(sm) {
+  .song {
+    justify-content: center;
+    max-width: 100%;
+    &__additionalInfo {
+      justify-content: center;
+    }
+  }
+}

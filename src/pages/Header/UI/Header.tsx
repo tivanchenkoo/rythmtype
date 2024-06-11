@@ -23,7 +23,7 @@ const Header = (): JSX.Element => {
 								</p>
 								<Link
 									className={styles.header__playbutton}
-									to={`/game?lang=${language}`}
+									to={`/allgames?lang=${language}`}
 								>
 									Играть
 								</Link>
