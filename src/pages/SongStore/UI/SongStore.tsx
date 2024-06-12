@@ -73,7 +73,7 @@ const SongStore = (): JSX.Element => {
 						</p>
 						<p className={styles.songStore__title}>
 							{language === "ru" ? "Лучшее" : "The best"}
-						</p>
+					</p>
 						<div className={styles.songStore__fivesongs}>
 							{songsList
 								.filter((song) => song.typeOfSong === zhanr)

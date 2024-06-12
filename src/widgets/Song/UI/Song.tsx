@@ -43,7 +43,7 @@ const Song = (props: songProps) => {
 	return (
 		<Link to={`/game/${id}?lang=${language}`} className={styles.song}>
 			<img className={styles.song__image} src={image} alt="" />
-			<div style={{ marginLeft: 10 }} className="d-flex flex-column">
+			<div className={styles.song__rightblock}>
 				<p className="text-center">{title}</p>
 				<div className={styles.song__additionalInfo}>
 					<p className={styles.song__subtitle}>{author}</p>
