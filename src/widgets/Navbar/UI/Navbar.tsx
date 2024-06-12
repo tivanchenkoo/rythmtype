@@ -6,20 +6,21 @@ import twitter from "@/shared/photos/twitterlogo.png"
 import instagram from "@/shared/photos/instagramlogo.png"
 import { Link, useLocation, useNavigate, useParams } from "react-router-dom"
 import {
+	selectKeyboard,
 	selectLang,
 	setKeyboard,
-	setLang,
 } from "@/shared/Slices/globalInfoSlice"
 import { useDispatch, useSelector } from "react-redux"
-import { useCallback } from "react"
+import { Cookies } from "react-cookie"
 const Navbar = (): JSX.Element => {
 	const navigate = useNavigate()
+	const keyboard = useSelector(selectKeyboard)
+	const cookies = new Cookies()
 	let location = useLocation().pathname.split(/\//g)
 	type languageType = "ru" | "en"
 	const { language } = useParams<{ language: languageType }>()
 	const languageRedux = useSelector(selectLang)
 	const dispatch = useDispatch()
-
 	if (languageRedux === "ru") {
 		return (
 			<div
@@ -35,7 +36,10 @@ const Navbar = (): JSX.Element => {
 					>
 						Инструкция
 					</Link>
-					<Link to={`/allgames?lang=${languageRedux}`} className={styles.subtitle}>
+					<Link
+						to={`/allgames?lang=${languageRedux}`}
+						className={styles.subtitle}
+					>
 						Играть
 					</Link>
 				</div>
@@ -52,8 +56,10 @@ const Navbar = (): JSX.Element => {
 								id=""
 								className={`${styles.navbar__keyboards} ${styles.navbar__select}`}
 								onChange={(e) => {
+									cookies.set("keyboard", e.target.value)
 									dispatch(setKeyboard(e.target.value))
 								}}
+								value={keyboard}
 							>
 								<option value="default">Default</option>
 								<option value="apple">Apple</option>
@@ -80,16 +86,14 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
+									cookies.set("lang", e.target.value)
 									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
 							}}
+							value={languageRedux}
 						>
-							<option selected={languageRedux === "en"} value="en">
-								Англ
-							</option>
-							<option selected={languageRedux === "ru"} value="ru">
-								Ру
-							</option>
+							<option value="en">Англ</option>
+							<option value="ru">Ру</option>
 						</select>
 					</div>
 				</div>
@@ -110,7 +114,10 @@ const Navbar = (): JSX.Element => {
 					>
 						Instruction
 					</Link>
-					<Link to={`/allgames?lang=${languageRedux}`} className={styles.subtitle}>
+					<Link
+						to={`/allgames?lang=${languageRedux}`}
+						className={styles.subtitle}
+					>
 						Play
 					</Link>
 				</div>
@@ -123,10 +130,12 @@ const Navbar = (): JSX.Element => {
 							className={`${styles.navbar__keyboard} ${styles.navbar__selectwrapper}`}
 						>
 							<select
+								value={keyboard}
 								name=""
 								id=""
 								className={`${styles.navbar__keyboards} ${styles.navbar__select}`}
 								onChange={(e) => {
+									cookies.set("keyboard", e.target.value)
 									dispatch(setKeyboard(e.target.value))
 								}}
 							>
@@ -155,10 +164,11 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
+									cookies.set("lang", e.target.value)
 									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
-								dispatch(setLang(e.target.value))
 							}}
+							value={languageRedux}
 						>
 							<option value="en">En</option>
 							<option value="ru">Ru</option>

@@ -5,9 +5,9 @@ import { Col, Container, Image, Row } from "react-bootstrap"
 import rocket from "@/shared/photos/Rocket.png"
 import { selectLang } from "@/shared/Slices/globalInfoSlice"
 import { useSelector } from "react-redux"
+import { Cookies } from "react-cookie"
 const Header = (): JSX.Element => {
 	const language = useSelector(selectLang)
-
 	if (language === "ru") {
 		return (
 			<header className={styles.header}>
