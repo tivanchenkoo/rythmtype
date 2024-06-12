@@ -8,6 +8,7 @@
 }
 
 .navbar {
+  z-index: 100;
   position: fixed;
   width: 100%;
   margin-top: 20px;
@@ -118,7 +119,9 @@
       margin: 0;
 
     }
-
+    &__line {
+      display: none;
+    }
     &__rightblock {
       flex-direction: column;
       width: 100%;

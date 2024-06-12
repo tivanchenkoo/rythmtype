@@ -5,10 +5,10 @@
   background-color: #000E31;
   width: 100vw;
   height: 100vh;
-  overflow : hidden;
+  overflow: hidden;
 
   &__title {
-    font-size: 82px;
+    font-size: clamp(32px, 8vw, 82px);
     font-weight: 900;
     margin-bottom: 21px;
   }

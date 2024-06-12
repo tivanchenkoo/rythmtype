@@ -1,0 +1,71 @@
+@import "@/shared/scss/colors.scss";
+@import "@/shared/scss/_bootstrapdependencies";
+
+.instruction {
+  &__startscreen {
+    width: 100vw;
+    height: 100vh;
+    background: url("../../shared/photos/instructionBg.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    font-size: clamp(32px, 8vw, 60px);
+    text-align: center;
+    font-weight: bold;
+  }
+
+  &__guide {
+    background-color: #FFAEAE;
+    padding-bottom: 125px;
+    padding-top: 161px;
+  }
+
+
+  &__advices {
+    gap: 51px;
+    display: inline-flex;
+    flex-direction: column;
+    width: 100%;
+    padding-left: 437px;
+
+    @include media-breakpoint-down(xxl) {
+      padding: 0;
+    }
+  }
+
+  &__subtitle {
+    font-size: 19px;
+    margin-left: 13px;
+  }
+
+  &__happygame {
+    font-size: clamp(32px, 8vw, 64px);
+    color: #000;
+    text-align: center;
+  }
+
+  &__playbuttonarea {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 152px;
+    flex-wrap: wrap;
+  }
+
+  &__playbutton {
+    margin-left: 76px;
+
+    @include media-breakpoint-down(md) {
+      margin: 0;
+    }
+
+    background-color: $white;
+    border-radius: 20px;
+    padding: 25.5px 109px;
+    color: #000;
+    text-decoration: none;
+  }
+}

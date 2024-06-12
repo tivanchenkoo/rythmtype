@@ -30,12 +30,12 @@ const Navbar = (): JSX.Element => {
 				>
 					<Image src={logo}></Image>
 					<Link
-						to={""}
+						to={`/instruction?lang=${languageRedux}`}
 						className={`${styles.subtitle} ${styles.navbar__instruction}`}
 					>
 						Инструкция
 					</Link>
-					<Link to={""} className={styles.subtitle}>
+					<Link to={`/game?lang=${languageRedux}`} className={styles.subtitle}>
 						Играть
 					</Link>
 				</div>
@@ -105,12 +105,12 @@ const Navbar = (): JSX.Element => {
 				>
 					<Image src={logo}></Image>
 					<Link
-						to={""}
+						to={`/instruction?lang=${languageRedux}`}
 						className={`${styles.subtitle} ${styles.navbar__instruction}`}
 					>
 						Instruction
 					</Link>
-					<Link to={""} className={styles.subtitle}>
+					<Link to={`/game?lang=${languageRedux}`} className={styles.subtitle}>
 						Play
 					</Link>
 				</div>
@@ -154,7 +154,7 @@ const Navbar = (): JSX.Element => {
 							name="language"
 							id=""
 							onChange={(e) => {
-							if (e.target.value !== language) {
+								if (e.target.value !== language) {
 									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
 								dispatch(setLang(e.target.value))

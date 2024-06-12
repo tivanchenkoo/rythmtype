@@ -12,12 +12,18 @@ const Header = (): JSX.Element => {
 		return (
 			<header className={styles.header}>
 				<Container className="h-100" fluid>
-					<Row>
+					<Row
+						style={{
+							top: "50%",
+							transform: "translateY(-50%)",
+							position: "relative",
+						}}
+					>
 						<Col xs={12} lg={7}>
 							<div
 								className={`${styles.header__info} d-flex align-items-center align-items-lg-start flex-column`}
 							>
-								<p className={styles.header__title}>Научись писать быстрее</p>
+								<p className={styles.header__title}>Научись печатать быстрее</p>
 								<p className={styles.header__subtitle}>
 									Пиши в 2 раза быстрее просто играя в игру
 								</p>
@@ -27,7 +33,10 @@ const Header = (): JSX.Element => {
 								>
 									Играть
 								</Link>
-								<Link className={styles.header__instructionbutton} to={""}>
+								<Link
+									className={styles.header__instructionbutton}
+									to={`/instruction?lang=${language}`}
+								>
 									Инструкция
 								</Link>
 							</div>
@@ -58,7 +67,10 @@ const Header = (): JSX.Element => {
 								>
 									Play
 								</Link>
-								<Link className={styles.header__instructionbutton} to={""}>
+								<Link
+									className={styles.header__instructionbutton}
+									to={`/instruction?lang=${language}`}
+								>
 									Instruction
 								</Link>
 							</div>
