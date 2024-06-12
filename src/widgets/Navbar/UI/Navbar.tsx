@@ -35,7 +35,7 @@ const Navbar = (): JSX.Element => {
 					>
 						Инструкция
 					</Link>
-					<Link to={`/game?lang=${languageRedux}`} className={styles.subtitle}>
+					<Link to={`/allgames?lang=${languageRedux}`} className={styles.subtitle}>
 						Играть
 					</Link>
 				</div>
@@ -110,7 +110,7 @@ const Navbar = (): JSX.Element => {
 					>
 						Instruction
 					</Link>
-					<Link to={`/game?lang=${languageRedux}`} className={styles.subtitle}>
+					<Link to={`/allgames?lang=${languageRedux}`} className={styles.subtitle}>
 						Play
 					</Link>
 				</div>
