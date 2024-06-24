@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import { Outlet, useLocation, useNavigate } from "react-router-dom"
 import Navbar from "@/widgets/Navbar/UI/Navbar"
 import { useDispatch, useSelector } from "react-redux"
@@ -15,26 +15,29 @@ const GlobalWrapper = () => {
 	const language = location.lang
 	const languageRedux = useSelector(selectLang)
 	const cookies = new Cookies()
-	const cookieLanguage = cookies.get("lang")
+	const [cookieLanguage, setCookieLanguage] = useState(cookies.get("lang"))
 	const cookieKeyboard = cookies.get("keyboard")
 	const navigate = useNavigate()
 	const dispatch = useDispatch()
+	console.log(cookieLanguage)
+
 	useEffect(() => {
 		if (language === "ru" || language === "en") {
-			new Cookies().set("lang", language)
+			cookies.set("lang", language)
+			setCookieLanguage(cookies.get("lang"))
 		}
-	}, [language])
+	}, [language, cookieLanguage, cookies])
 	useEffect(() => {
 		if (!cookieKeyboard) {
-			new Cookies().set("keyboard", "default")
+			cookies.set("keyboard", "default")
 		}
 		dispatch(setKeyboard(cookieKeyboard))
-	}, [cookieKeyboard, dispatch])
+	}, [cookieKeyboard, dispatch, cookies])
 	useEffect(() => {
 		if (language !== "ru" && language !== "en") {
 			navigate(`/?lang=${cookieLanguage}`)
 		}
-		if (cookieLanguage && cookieLanguage !== languageRedux) {
+		if (language !== languageRedux) {
 			dispatch(setLang(language))
 		}
 	}, [language, dispatch, languageRedux, navigate, cookieLanguage])

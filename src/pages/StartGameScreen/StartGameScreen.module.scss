@@ -1,0 +1,35 @@
+.buttonWrapper {
+  max-width: 250px;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, red, purple);
+  padding: 3px;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+.startButton {
+  font-size: 32px;
+  background-color: #000;
+  border: 0;
+  padding: 2.5px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  color: #fff;
+  display: block;
+}
+
+.startScreen {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  background-color: #000;
+
+  &__text {
+    font-size: clamp(32px, 8vw, 84px);
+    text-align: center;
+  }
+}

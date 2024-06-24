@@ -67,18 +67,18 @@ const SongStore = (): JSX.Element => {
 					}
 				}
 				return (
-					<div className={styles.songStore__category}>
+					<div key={zhanr} className={styles.songStore__category}>
 						<p className={styles.songStore__subtitle}>
 							{articleZhanr.toUpperCase()}
 						</p>
 						<p className={styles.songStore__title}>
 							{language === "ru" ? "Лучшее" : "The best"}
-					</p>
+						</p>
 						<div className={styles.songStore__fivesongs}>
 							{songsList
 								.filter((song) => song.typeOfSong === zhanr)
-								.map((song) => (
-									<Song song={song} />
+								.map((song, id) => (
+									<Song key={id} song={song} />
 								))}
 						</div>
 					</div>

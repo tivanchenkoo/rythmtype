@@ -48,33 +48,18 @@ const Song = (props: songProps) => {
 				<div className={styles.song__additionalInfo}>
 					<p className={styles.song__subtitle}>{author}</p>
 					--
-					{language === "ru" ? (
-						<p
-							className={styles.song__subtitle}
-							style={
-								complexity === "ТЯЖЕЛО"
-									? { color: "red" }
-									: complexity === "ЛЕГКО"
-									? { color: "green" }
-									: { color: "orange" }
-							}
-						>
-							{complexity}
-						</p>
-					) : (
-						<p
-							className={styles.song__subtitle}
-							style={
-								complexity === "HARD"
-									? { color: "red" }
-									: complexity === "EASY"
-									? { color: "green" }
-									: { color: "orange" }
-							}
-						>
-							{complexity}
-						</p>
-					)}
+					<p
+						className={styles.song__subtitle}
+						style={
+							complexity === "ТЯЖЕЛО" || complexity === "HARD"
+								? { color: "red" }
+								: complexity === "ЛЕГКО" || complexity === "EASY"
+								? { color: "green" }
+								: { color: "orange" }
+						}
+					>
+						{complexity}
+					</p>
 				</div>
 			</div>
 		</Link>

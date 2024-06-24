@@ -21,6 +21,7 @@ const Navbar = (): JSX.Element => {
 	const { language } = useParams<{ language: languageType }>()
 	const languageRedux = useSelector(selectLang)
 	const dispatch = useDispatch()
+	console.log(languageRedux)
 	if (languageRedux === "ru") {
 		return (
 			<div
@@ -44,7 +45,7 @@ const Navbar = (): JSX.Element => {
 					</Link>
 				</div>
 				<div
-					className={`${styles.navbar__rightblock} d-flex align-items-center w-auto justify-content-center justify-content-lg-end flex-shrink-0 flex-grow-1 w-auto flex-wrap`}
+					className={`${styles.navbar__rightblock} d-flex align-items-center w-auto justify-content-center justify-content-xl-end flex-shrink-0 flex-grow-1 w-auto flex-wrap`}
 				>
 					<div className="d-none d-lg-flex align-items-center">
 						<p className={` m-0 mr-3`}>Клавиатура :</p>
@@ -77,7 +78,9 @@ const Navbar = (): JSX.Element => {
 							<Image className={styles.navbar__logo} src={instagram}></Image>
 						</Link>
 					</div>
-					<button className={styles.navbar__button}>Регистрация</button>
+					<Link to={`/form`} className={styles.navbar__button}>
+						<p> Регистрация</p>
+					</Link>
 					<div className={styles.navbar__line}></div>
 					<div className={styles.navbar__selectwrapper}>
 						<select
@@ -86,7 +89,6 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
-									cookies.set("lang", e.target.value)
 									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
 							}}
@@ -122,7 +124,7 @@ const Navbar = (): JSX.Element => {
 					</Link>
 				</div>
 				<div
-					className={`${styles.navbar__rightblock} d-flex align-items-center w-auto justify-content-center justify-content-lg-end flex-shrink-0 flex-grow-1 w-auto flex-wrap`}
+					className={`${styles.navbar__rightblock} d-flex align-items-center w-auto justify-content-center justify-content-xl-end flex-shrink-0 flex-grow-1 w-auto flex-wrap`}
 				>
 					<div className="d-none d-lg-flex align-items-center">
 						<p className={` m-0 mr-3`}>Keyboard :</p>
@@ -155,7 +157,9 @@ const Navbar = (): JSX.Element => {
 							<Image className={styles.navbar__logo} src={instagram}></Image>
 						</Link>
 					</div>
-					<button className={styles.navbar__button}>Log In</button>
+					<Link to={`/form`} className={styles.navbar__button}>
+						<p> Log In</p>
+					</Link>
 					<div className={`d-none d-sm-block ${styles.navbar__line}`}></div>
 					<div className={styles.navbar__selectwrapper}>
 						<select
@@ -164,7 +168,6 @@ const Navbar = (): JSX.Element => {
 							id=""
 							onChange={(e) => {
 								if (e.target.value !== language) {
-									cookies.set("lang", e.target.value)
 									navigate(`${location.join("/")}?lang=${e.target.value}`)
 								}
 							}}

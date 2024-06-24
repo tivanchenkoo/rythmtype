@@ -6,11 +6,10 @@ import { useSelector } from "react-redux"
 import {
 	selectCurrentKey,
 	selectKeyboard,
-	selectLang,
 } from "@/shared/Slices/globalInfoSlice"
 import { getKeyboardLayout } from "@/entities/keyboard/keyboardLayout"
-const Keyboard = (): JSX.Element => {
-	const language = useSelector(selectLang)
+const Keyboard = (props: { language: "ru" | "en" }): JSX.Element => {
+	const { language } = props
 	const keyboard = useSelector(selectKeyboard)
 	const currentKey = useSelector(selectCurrentKey)
 	type row = "row1" | "row2" | "row3" | "row4" | "row5"

@@ -4,16 +4,24 @@ p {
   margin: 0;
 }
 
-.gamearea,
-.startScreen {
+.gamearea {
   width: 100vw;
   height: 100vh;
   display: flex;
+  overflow: hidden;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-
   background-color: #000;
+
+  &__image {
+    border-radius: 15px;
+  }
+
+  &__subtitle {
+    color: #B2B2B2;
+    font-size: 24px;
+  }
 
   &:focus {
     outline: none;
@@ -77,11 +85,4 @@ p {
     margin-bottom: 105px;
   }
 
-  .startButton {
-    margin: auto 0;
-    font-size: 64px;
-    background-color: transparent;
-    border: none;
-    border-bottom: solid 2px #fff;
-  }
 }

@@ -1,6 +1,6 @@
 import Keyboard from "@/widgets/Keyboard/UI/Keyboard"
-import { useEffect, useRef, useState } from "react"
 import styles from "@/pages/GameArea/GameArea.module.scss"
+import { useEffect, useRef, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import {
 	selectLang,
@@ -15,6 +15,7 @@ import audio from "@/shared/myaudio.mp3"
 import { ThreeDots } from "react-loader-spinner"
 import StartGameScreen from "@/pages/StartGameScreen/UI/StartGameScreen"
 import {
+	selectIsTrainingMode,
 	setTrainingMode,
 } from "@/shared/Slices/currentSongSlice"
 interface props {
@@ -31,7 +32,7 @@ interface props {
 	}
 }
 
-const GameArea = (props: props): JSX.Element => {
+const GameAreaLearnMode = (props: props): JSX.Element => {
 	const id = useParams().id
 	let {
 		lyrics,
@@ -45,6 +46,7 @@ const GameArea = (props: props): JSX.Element => {
 		end,
 	} = props.song
 	type lang = "en" | "ru"
+	const [isChecking, setIsChecking] = useState<boolean>(false)
 	const [inputValue, setInputValue] = useState("")
 	const [lyricNum, setLyricNum] = useState(0)
 	const [play, setPlay] = useState<boolean>(false)
@@ -61,33 +63,19 @@ const GameArea = (props: props): JSX.Element => {
 	const songRef = useRef<HTMLAudioElement>()
 	const language = useSelector<lang>(selectLang)
 	const vw = window.screen.width
+	useEffect(() => {
+		if (!timings[timing] || !lyrics[lyricNum]) {
+			navigate(`/completed/${id}?lang=${language}`)
+		}
+	})
+	useEffect(() => {
+		dispatch(setTrainingMode(true))
+	}, [])
 	const playSong = () => {
 		songRef.current = new Audio(audio)
 		songRef.current.play()
 		setPlay(true)
 	}
-	useEffect(() => {
-		dispatch(setTrainingMode(false))
-	})
-	useEffect(() => {
-		if (play) {
-			setTimeout(() => {
-				navigate(`/completed/${id}?lang=${language}`)
-			}, end * 1000)
-		}
-	})
-
-	useEffect(() => {
-		dispatch(setAllLyricsQuantity(lyrics.length))
-
-		dispatch(
-			setAllSymbolsQuantity(
-				lyrics.reduce((accamulator, currentValue) => {
-					return accamulator + currentValue.length
-				}, 0)
-			)
-		)
-	}, [dispatch, lyrics])
 
 	useEffect(() => {
 		return () => {
@@ -112,23 +100,55 @@ const GameArea = (props: props): JSX.Element => {
 	}, [play, intro])
 
 	useEffect(() => {
+		let checkingInterval: NodeJS.Timeout
 		if (!isIntro) {
 			if (play && timings[timing]) {
-				setTimeout(
-					() => {
-						setIsStringCompleted(false)
-						setInputValue("")
-						setTiming(timing + 1)
-						setLyricNum(lyricNum + 1)
-					},
-					timings[timing - 1]
-						? (timings[timing] - timings[timing - 1]) * 1000
-						: timings[timing] * 1000 - intro * 1000
-				)
+				if (!isStringCompleted && isChecking) {
+					console.log("stopped")
+					songRef.current?.pause()
+				}
+				if (!isChecking) {
+					setTimeout(
+						() => {
+							setIsChecking(true)
+							setTiming(timing + 1)
+							console.log(timing)
+							console.log(timings[timing])
+						},
+						timings[timing - 1]
+							? (timings[timing] - timings[timing - 1]) * 1000
+							: timings[timing] * 1000 - intro * 1000
+					)
+				} else if (isChecking) {
+					checkingInterval = setInterval(() => {
+						if (isStringCompleted) {
+							console.log("completed")
+							songRef.current?.play()
+							setIsStringCompleted(false)
+							setInputValue("")
+							setLyricNum(lyricNum + 1)
+							setIsChecking(false)
+							console.log("checking - false")
+						}
+					}, 1000)
+				}
 			}
 		}
-	}, [play, lyricNum, timing, timings, isIntro, intro])
-
+		return () => {
+			if (checkingInterval) {
+				clearInterval(checkingInterval)
+			}
+		}
+	}, [
+		intro,
+		isChecking,
+		isIntro,
+		isStringCompleted,
+		lyricNum,
+		play,
+		timing,
+		timings,
+	])
 	useEffect(() => {
 		if (lyrics[lyricNum] && lyrics[lyricNum][inputValue.length]) {
 			if (lyrics[lyricNum][inputValue.length].match(/[A-Z]/)) {
@@ -165,7 +185,7 @@ const GameArea = (props: props): JSX.Element => {
 						songLanguage,
 						playSong,
 						language,
-						isLearnMode: false,
+						isLearnMode: true,
 					}}
 				></StartGameScreen>
 			)
@@ -202,11 +222,9 @@ const GameArea = (props: props): JSX.Element => {
 									text[text.length - 1] === lyrics[lyricNum][text.length - 1]
 								) {
 									setInputValue(e.target.value)
-									dispatch(upSymbolsTyped())
 								}
 								if (e.target.value === lyrics[lyricNum]) {
 									setIsStringCompleted(true)
-									dispatch(upLyricCompleted())
 									setInputValue("")
 								}
 							} else {
@@ -244,4 +262,4 @@ const GameArea = (props: props): JSX.Element => {
 	)
 }
 
-export default GameArea
+export default GameAreaLearnMode
