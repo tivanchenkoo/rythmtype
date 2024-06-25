@@ -8,6 +8,18 @@
   margin-top: 50px;
 }
 
+.buttonWrapperLearn {
+  max-width: 250px;
+  padding: 1rem;
+  position: relative;
+  background: linear-gradient(to right, #0b2845, #188bff, );
+  padding: 3px;
+  border-radius: 5px;
+  margin-top: 50px;
+}
+
+
+
 .startButton {
   font-size: 32px;
   background-color: #000;
@@ -31,5 +43,9 @@
   &__text {
     font-size: clamp(32px, 8vw, 84px);
     text-align: center;
+  }
+
+  &__midFont {
+    font-size: clamp(24px, 5vw, 32px);
   }
 }

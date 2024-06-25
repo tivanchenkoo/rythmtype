@@ -30,7 +30,12 @@ const StartGameScreen = (props: props): JSX.Element => {
 		<div className={styles.startScreen}>
 			<img src={image} alt="" className={styles.startScreen__image} />
 			<p className={styles.startScreen__text}>{title}</p>
-			<p className={styles.startScreen__subtitle}>{author}</p>
+			{isLearnMode ? (
+				<p className={styles.startScreen__midFont}>
+					{language === "ru" ? "Обучение" : "Learn mode"}
+				</p>
+			) : null}
+			<p>{author}</p>
 			<p
 				style={
 					complexity === "ТЯЖЕЛО" || complexity === "HARD"
@@ -39,7 +44,6 @@ const StartGameScreen = (props: props): JSX.Element => {
 						? { color: "green" }
 						: { color: "orange" }
 				}
-				className={styles.startScreen__subtitle}
 			>
 				{complexity}
 			</p>
@@ -50,16 +54,16 @@ const StartGameScreen = (props: props): JSX.Element => {
 			>
 				<div className={styles.buttonWrapper}>
 					<button className={styles.startButton} onClick={playSong}>
-						Start
+						{language === "ru" ? "Начать" : "Start"}
 					</button>
 				</div>
 				{isLearnMode ? null : (
-					<div className={styles.buttonWrapper}>
+					<div className={styles.buttonWrapperLearn}>
 						<Link
 							to={`/tutorial/${id}?lang=${language}`}
 							className={styles.startButton}
 						>
-							Learn mode
+							{language === "ru" ? "Обучение" : "Learn mode"}
 						</Link>
 					</div>
 				)}

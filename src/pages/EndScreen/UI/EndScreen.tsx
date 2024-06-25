@@ -108,6 +108,8 @@ const EndScreen = (): JSX.Element => {
 				</div>
 			</div>
 		)
+	}else {
+		navigate(`/?lang=${language}`)
 	}
 	return <div></div>
 }
